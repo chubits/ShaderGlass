@@ -550,6 +550,10 @@ void ShaderWindow::SaveProfile(const std::wstring& fileName)
             outfile << "CaptureDevice " << std::quoted(buf) << std::endl;
             outfile << "CaptureFormat " << std::quoted(fi->id) << std::endl;
         }
+
+        const auto& crop = m_captureOptions.croppedArea;
+        outfile << "CroppedArea \"" << std::to_string(crop.left) << " " << std::to_string(crop.top) << " " << std::to_string(crop.right) << " " << std::to_string(crop.bottom)
+                << "\"" << std::endl;
     }
     else if(m_captureOptions.captureWindow && m_captureOptions.captureWindow != HWND_BROADCAST)
     {
